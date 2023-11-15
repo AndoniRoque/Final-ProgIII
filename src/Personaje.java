@@ -115,4 +115,22 @@ public class Personaje extends Character {
     protected double calcular_PDEF() {
         return this.def * this.spd;
     }
+
+    public void health_update(double daño_ataque) {
+        setHealth(health - (int)daño_ataque);
+    }
+
+    @Override
+    public String toString() {
+        return "Personaje{" +
+                "level=" + level +
+                ", health=" + health +
+                ", name='" + name + '\'' +
+                ", str=" + str +
+                ", dex=" + dex +
+                ", def=" + def +
+                ", spd=" + spd +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 }
