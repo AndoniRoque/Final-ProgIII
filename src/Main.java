@@ -48,8 +48,6 @@ public class Main {
 
                 int i = 1; // Número de rounds.
 
-                System.out.println("Ronda: " + i);
-                System.out.println("-------------------------------");
                 ArrayList <Personaje> first_attacker = (ArrayList<Personaje>) ElegirPartyAtaca(party_1, party_2);
                 ArrayList<Personaje> second_attacker;
 
@@ -64,13 +62,45 @@ public class Main {
                 System.out.println("-------------------------------");
                 Personaje attacker = ElegirPersonaje(first_attacker);
                 Personaje defender = ElegirPersonaje(second_attacker);
-                System.out.println(attacker.name + " atacará primero.");
-                System.out.println(defender.name + " defenderá.");
+                System.out.println(attacker.name + " attacks first.");
+                System.out.println(defender.name + " will defend.");
                 System.out.println("-------------------------------");
-                System.out.println(attacker.name + " lanza un ataque de: " + attacker.valor_ataque + " puntos de daño." );
-                System.out.println(defender.name + " se defiende y recibe: " + (defender.poder_defensa - );
 
+                while(i < 8 || attacker.health > 0 || defender.health > 0) {
+                    System.out.println("Round: " + i);
+                    System.out.println("-------------------------------")
 
+                    if (attacker instanceof Humano ) {
+                        System.out.println(attacker.name + " attacks with: " + ((Humano) attacker).ataque_humano(defender) + " points to " + defender.name + ".");
+                        defender.health_update(((Humano) attacker).ataque_humano(defender));
+                    } else if (attacker instanceof Orco) {
+                        System.out.println(attacker.name + " attacks with: " + ((Orco) attacker).ataque_orco(defender) + " points to " + defender.name + ".");
+                        defender.health_update(((Orco) attacker).ataque_orco(defender));
+                    } else if (attacker instanceof Elfo) {
+                        System.out.println(attacker.name + " attacks with: " + ((Elfo) attacker).ataque_elfo(defender) + " points to " + defender.name + ".");
+                        defender.health_update(((Elfo) attacker).ataque_elfo(defender));
+                    }
+
+                    i++;
+
+                    System.out.println("-------------------------------");
+                    System.out.println("Round: " + i);
+                    System.out.println("-------------------------------");
+
+                    System.out.println("Now " + defender.name + " attacks.");
+                    System.out.println(attacker.name + " will defend.");
+
+                    if (defender instanceof Humano ) {
+                        System.out.println(defender.name + " attacks with: " + ((Humano) defender).ataque_humano(attacker) + " points to " + attacker.name + ".");
+                        attacker.health_update(((Humano) defender).ataque_humano(attacker));
+                    } else if (defender instanceof Orco) {
+                        System.out.println(defender.name + " attacks with: " + ((Orco) defender).ataque_orco(attacker) + " points to " + attacker.name + ".");
+                        attacker.health_update(((Orco) defender).ataque_orco(attacker));
+                    } else if (defender instanceof Elfo) {
+                        System.out.println(defender.name + " attacks with: " + ((Elfo) defender).ataque_elfo(attacker) + " points to " + attacker.name + ".");
+                        attacker.health_update(((Elfo) defender).ataque_elfo(attacker));
+                    }
+                }
 
             } else if (input.equals("2")) {
                 // TODO: generar partys aleatorias.
@@ -99,6 +129,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int select_tipo = -1;
         String tipo = "";
+
 
         while (select_tipo == -1) {
             System.out.println("----- Character Creation ------");
@@ -148,7 +179,17 @@ public class Main {
         int spd = scanner.nextInt();
         scanner.nextLine();
 
-        Personaje character1 = new Personaje(10, 100, name, str, dex, def, spd, tipo);
+        Personaje character1 = null;
+
+        if(tipo.equals("Humano")) {
+            character1 = new Humano(10,100,name, str, dex, def, spd, tipo);
+        } else if (tipo.equals("Elfo")) {
+            character1 = new Elfo(10, 100,name, str, dex, def, spd, tipo);
+        } else if (tipo.equals("Orco")) {
+            character1 = new Orco(10, 100, name, str,dex, def, spd, tipo);
+        } else {
+            System.out.println("ERROR");
+        }
 
         System.out.println("---------------------------------------------------------------------------");
         System.out.println("Tu personaje es: " + character1.name + " de tipo: " + character1.tipo + ".");

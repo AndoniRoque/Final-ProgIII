@@ -4,12 +4,12 @@ public class Humano extends Personaje {
         super(level, health, name, str, dex, def, spd, tipo);
     }
 
-    public double ataque(Personaje personaje) {
-        double va = calcular_VA();
-        double ed =calcular_ED();
-        double pdef = calcular_PDEF();
+    public double ataque_humano(Personaje personaje) {
+        double va = this.calcular_VA();
+        double ed = this.calcular_ED();
+        double pdef = personaje.calcular_PDEF();
 
-        return ((va*ed)-pdef/500)*100;
+        return ((va * ed) - pdef / 500) * 100;
     }
 
 }

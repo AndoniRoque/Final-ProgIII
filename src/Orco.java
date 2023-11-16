@@ -5,11 +5,11 @@ public class Orco extends Personaje{
         super(level, health, name, str, dex, def, spd, tipo);
     }
 
-    public double ataque(){
-        double va = calcular_VA();
-        double ed =calcular_ED();
-        double pdef = calcular_PDEF();
+    public double ataque_orco(Personaje personaje){
+        double va = this.calcular_VA();
+        double ed = this.calcular_ED();
+        double pdef = personaje.calcular_PDEF();
 
-        return (((va*ed)-pdef/500)*100)*1.1;
+        return (((va * ed) - pdef / 500) * 100) * 1.1;
     }
 }
