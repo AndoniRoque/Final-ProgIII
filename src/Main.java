@@ -48,77 +48,31 @@ public class Main {
 
                 int i = 1; // Número de rounds.
 
-                ArrayList <Personaje> first_attacker = (ArrayList<Personaje>) ElegirPartyAtaca(party_1, party_2);
-                ArrayList<Personaje> second_attacker;
-
-                if (first_attacker.equals(party_1)) {
-                    System.out.println("First party attacks first.");
-                    second_attacker = party_2;
-                } else {
-                    System.out.println("Second party attacks first");
-                    second_attacker = party_1;
+                while (!party_1.isEmpty() || !party_2.isEmpty()) {
+                    Combate(party_1, party_2, i);
                 }
 
-                System.out.println("-------------------------------");
-                Personaje attacker = ElegirPersonaje(first_attacker);
-                Personaje defender = ElegirPersonaje(second_attacker);
-                System.out.println(attacker.name + " attacks first.");
-                System.out.println(defender.name + " will defend.");
-
-                while(i < 7 && attacker.getHealth() > 0 && defender.getHealth() > 0) {
-                    System.out.println("Round: " + i);
+                if (party_1.isEmpty()){
+                    System.out.println("Press Enter to continue...");
+                    input = scanner.nextLine();
                     System.out.println("-------------------------------");
-
-                    if (attacker instanceof Humano ) {
-                        double danio = ((Humano) attacker).ataque_humano(defender);
-                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
-                        defender.health_update(danio);
-                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
-                    } else if (attacker instanceof Orco) {
-                        double danio = ((Orco) attacker).ataque_orco(defender);
-                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
-                        defender.health_update(danio);
-                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
-                    } else if (attacker instanceof Elfo) {
-                        double danio = ((Elfo) attacker).ataque_elfo(defender);
-                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
-                        defender.health_update(danio);
-                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
-                    }
-
-                    i++;
-
+                    System.out.println("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.");
                     System.out.println("-------------------------------");
-                    System.out.println("Round: " + i);
+                    System.out.println("^  ^  ^");
+                    System.out.println("|V * V|");
+                    System.out.println("|_____| ");
+                } else if (party_2.isEmpty()) {
+                    System.out.println("Press Enter to continue...");
+                    input = scanner.nextLine();
                     System.out.println("-------------------------------");
-
-                    System.out.println("Now " + defender.name + " attacks.");
-                    System.out.println(attacker.name + " will defend.");
-
-                    if (defender instanceof Humano ) {
-                        double danio = ((Humano) defender).ataque_humano(attacker);
-                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
-                        attacker.health_update(danio);
-                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
-                    } else if (defender instanceof Orco) {
-                        double danio = ((Orco) defender).ataque_orco(attacker);
-                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
-                        attacker.health_update(danio);
-                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
-                    } else if (defender instanceof Elfo) {
-                        double danio = ((Elfo) defender).ataque_elfo(attacker);
-                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
-                        attacker.health_update(danio);
-                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
-                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
-                    }
+                    System.out.println("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.");
                     System.out.println("-------------------------------");
+                    System.out.println("^  ^  ^");
+                    System.out.println("|V * V|");
+                    System.out.println("|_____| ");
                 }
+
+
 
             } else if (input.equals("2")) {
                 // TODO: generar partys aleatorias.
@@ -240,5 +194,129 @@ public class Main {
         Random random = new Random();
         int jugador = random.nextInt(party.size());
         return party.get(jugador);
+    }
+
+    public static void Combate(ArrayList<Personaje> party_1, ArrayList<Personaje> party_2, int i) {
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        ArrayList <Personaje> first_attacker = (ArrayList<Personaje>) ElegirPartyAtaca(party_1, party_2);
+        ArrayList<Personaje> second_attacker;
+
+        if (first_attacker.equals(party_1)) {
+            System.out.println("First party attacks first.");
+            second_attacker = party_2;
+        } else {
+            System.out.println("Second party attacks first");
+            second_attacker = party_1;
+        }
+
+        System.out.println("-------------------------------");
+        Personaje attacker = ElegirPersonaje(first_attacker);
+        Personaje defender = ElegirPersonaje(second_attacker);
+        System.out.println(">>>" + attacker.name + " attacks first.");
+        System.out.println("<<<" + defender.name + " will defend.");
+
+        while(i < 7 && attacker.getHealth() > 0 && defender.getHealth() > 0) {
+            System.out.println("-------------------------------");
+            System.out.println("Round: " + i);
+            System.out.println("-------------------------------");
+
+            if (attacker instanceof Humano ) {
+                double danio = ((Humano) attacker).ataque_humano(defender);
+                System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                defender.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                System.out.println("La salud del defensor: " + defender.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            } else if (attacker instanceof Orco) {
+                double danio = ((Orco) attacker).ataque_orco(defender);
+                System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                defender.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                System.out.println("La salud del defensor: " + defender.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            } else if (attacker instanceof Elfo) {
+                double danio = ((Elfo) attacker).ataque_elfo(defender);
+                System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                defender.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                System.out.println("La salud del defensor: " + defender.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            }
+
+            if (defender.getHealth() < 0) {
+                System.out.println("-------------------------------");
+                System.out.println(attacker.name + " won!!! ");
+                System.out.println("-------------------------------");
+                if (party_1.contains(defender)) {
+                    party_1.remove(defender);
+                } else {
+                    party_2.remove(defender);
+                }
+                break;
+            } else if (attacker.getHealth() < 0){
+                System.out.println("-------------------------------");
+                System.out.println(defender.name + " won!!!");
+                System.out.println("-------------------------------");
+                if (party_1.contains(attacker)) {
+                    party_1.remove(attacker);
+                } else {
+                    party_2.remove(attacker);
+                }
+                break;
+            }
+
+            i++;
+
+            System.out.println("-------------------------------");
+            System.out.println("Round: " + i);
+            System.out.println("-------------------------------");
+
+            System.out.println(">>> Now " + defender.name + " attacks.");
+            System.out.println("<<< " + attacker.name + " will defend.");
+
+            if (defender instanceof Humano ) {
+                double danio = ((Humano) defender).ataque_humano(attacker);
+                System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                attacker.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            } else if (defender instanceof Orco) {
+                double danio = ((Orco) defender).ataque_orco(attacker);
+                System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                attacker.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            } else if (defender instanceof Elfo) {
+                double danio = ((Elfo) defender).ataque_elfo(attacker);
+                System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                attacker.health_update(danio);
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+                System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                System.out.println("Press Enter to continue...");
+                input = scanner.nextLine();
+            }
+            i++;
+            System.out.println("-------------------------------");
+        }
     }
 }
