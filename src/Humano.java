@@ -9,7 +9,7 @@ public class Humano extends Personaje {
         double ed = this.calcular_ED();
         double pdef = personaje.calcular_PDEF();
 
-        return ((va * ed) - pdef / 500) * 100;
+        return ((va * ed) - pdef / 500) * 2;
     }
 
 }

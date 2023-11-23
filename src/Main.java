@@ -64,21 +64,29 @@ public class Main {
                 Personaje defender = ElegirPersonaje(second_attacker);
                 System.out.println(attacker.name + " attacks first.");
                 System.out.println(defender.name + " will defend.");
-                System.out.println("-------------------------------");
 
-                while(i < 8 || attacker.health > 0 || defender.health > 0) {
+                while(i < 7 && attacker.getHealth() > 0 && defender.getHealth() > 0) {
                     System.out.println("Round: " + i);
-                    System.out.println("-------------------------------")
+                    System.out.println("-------------------------------");
 
                     if (attacker instanceof Humano ) {
-                        System.out.println(attacker.name + " attacks with: " + ((Humano) attacker).ataque_humano(defender) + " points to " + defender.name + ".");
-                        defender.health_update(((Humano) attacker).ataque_humano(defender));
+                        double danio = ((Humano) attacker).ataque_humano(defender);
+                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                        defender.health_update(danio);
+                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
                     } else if (attacker instanceof Orco) {
-                        System.out.println(attacker.name + " attacks with: " + ((Orco) attacker).ataque_orco(defender) + " points to " + defender.name + ".");
-                        defender.health_update(((Orco) attacker).ataque_orco(defender));
+                        double danio = ((Orco) attacker).ataque_orco(defender);
+                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                        defender.health_update(danio);
+                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
                     } else if (attacker instanceof Elfo) {
-                        System.out.println(attacker.name + " attacks with: " + ((Elfo) attacker).ataque_elfo(defender) + " points to " + defender.name + ".");
-                        defender.health_update(((Elfo) attacker).ataque_elfo(defender));
+                        double danio = ((Elfo) attacker).ataque_elfo(defender);
+                        System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                        defender.health_update(danio);
+                        System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + defender.getHealth() + ".");
                     }
 
                     i++;
@@ -91,15 +99,25 @@ public class Main {
                     System.out.println(attacker.name + " will defend.");
 
                     if (defender instanceof Humano ) {
-                        System.out.println(defender.name + " attacks with: " + ((Humano) defender).ataque_humano(attacker) + " points to " + attacker.name + ".");
-                        attacker.health_update(((Humano) defender).ataque_humano(attacker));
+                        double danio = ((Humano) defender).ataque_humano(attacker);
+                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                        attacker.health_update(danio);
+                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
                     } else if (defender instanceof Orco) {
-                        System.out.println(defender.name + " attacks with: " + ((Orco) defender).ataque_orco(attacker) + " points to " + attacker.name + ".");
-                        attacker.health_update(((Orco) defender).ataque_orco(attacker));
+                        double danio = ((Orco) defender).ataque_orco(attacker);
+                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                        attacker.health_update(danio);
+                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
                     } else if (defender instanceof Elfo) {
-                        System.out.println(defender.name + " attacks with: " + ((Elfo) defender).ataque_elfo(attacker) + " points to " + attacker.name + ".");
-                        attacker.health_update(((Elfo) defender).ataque_elfo(attacker));
+                        double danio = ((Elfo) defender).ataque_elfo(attacker);
+                        System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                        attacker.health_update(danio);
+                        System.out.println("La salud del atacante: " + defender.getHealth() + ".");
+                        System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
                     }
+                    System.out.println("-------------------------------");
                 }
 
             } else if (input.equals("2")) {
@@ -125,7 +143,7 @@ public class Main {
     }
 
     public static Personaje GenerarPersonajes() {
-
+        // TODO: limitar skill points
         Scanner scanner = new Scanner(System.in);
         int select_tipo = -1;
         String tipo = "";

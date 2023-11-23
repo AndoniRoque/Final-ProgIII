@@ -103,7 +103,7 @@ public class Personaje extends Character {
 
     protected double calcular_ED() {
         Random random = new Random();
-        return random.nextInt(100) + 1;
+        return (random.nextInt(100) + 1) / 100.0;
     }
 
     protected double calcular_VA() {

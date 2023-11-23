@@ -8,7 +8,7 @@ public class Character {
     int level;
     String name;
 
-    public Character(int health, int level, String name) {
+    public Character(int level, int health, String name) {
         this.health = health;
         this.level = level;
         this.name = name;

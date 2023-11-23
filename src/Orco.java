@@ -10,6 +10,6 @@ public class Orco extends Personaje{
         double ed = this.calcular_ED();
         double pdef = personaje.calcular_PDEF();
 
-        return (((va * ed) - pdef / 500) * 100) * 1.1;
+        return (((va * ed) - pdef / 500) / 4) * 1.1;
     }
 }
