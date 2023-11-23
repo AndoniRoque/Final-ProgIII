@@ -48,7 +48,7 @@ public class Main {
 
                 int i = 1; // Número de rounds.
 
-                while (!party_1.isEmpty() || !party_2.isEmpty()) {
+                while ( party_1.size() > 0 && party_2.size() > 0) {
                     Combate(party_1, party_2, i);
                 }
 
@@ -61,7 +61,7 @@ public class Main {
                     System.out.println("^  ^  ^");
                     System.out.println("|V * V|");
                     System.out.println("|_____| ");
-                } else if (party_2.isEmpty()) {
+                } else {
                     System.out.println("Press Enter to continue...");
                     input = scanner.nextLine();
                     System.out.println("-------------------------------");
@@ -71,6 +71,9 @@ public class Main {
                     System.out.println("|V * V|");
                     System.out.println("|_____| ");
                 }
+
+                party_1.clear();
+                party_2.clear();
 
 
 
@@ -315,8 +318,35 @@ public class Main {
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             }
+            if (defender.getHealth() < 0) {
+                System.out.println("-------------------------------");
+                System.out.println(attacker.name + " won!!! ");
+                System.out.println("-------------------------------");
+                if (party_1.contains(defender)) {
+                    party_1.remove(defender);
+                } else {
+                    party_2.remove(defender);
+                }
+                break;
+            } else if (attacker.getHealth() < 0){
+                System.out.println("-------------------------------");
+                System.out.println(defender.name + " won!!!");
+                System.out.println("-------------------------------");
+                if (party_1.contains(attacker)) {
+                    party_1.remove(attacker);
+                } else {
+                    party_2.remove(attacker);
+                }
+                break;
+            }
             i++;
             System.out.println("-------------------------------");
+
+            if(party_1.size() <= 0) {
+                break;
+            } else if (party_2.size() <= 0) {
+                break;
+            }
         }
     }
 }
