@@ -3,16 +3,20 @@
 // (powered by FernFlower decompiler)
 //
 
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.io.File;
+import java.io.PrintStream;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Java Rol TUP");
         System.out.println("Welcome: ");
         String input = "0";
         ArrayList<Personaje> party_1 = new ArrayList();
         ArrayList<Personaje> party_2 = new ArrayList();
+        PrintStream logger = System.out;
 
         while(!input.equals("5")) {
             System.out.println("     1 . Start.");
@@ -79,10 +83,13 @@ public class Main {
 
             } else if (input.equals("2")) {
                 // TODO: generar partys aleatorias.
+
                 break;
 
             } else if (input.equals("3")) {
                 // TODO: mostrar logs.
+                PrintStream Log = new PrintStream(new File("logs.txt"));
+                System.setOut(Log);
                 break;
 
             } else if (input.equals("4")) {
@@ -96,6 +103,8 @@ public class Main {
             System.out.println("Press Enter to exit...");
             scanner.nextLine();
         }
+
+        System.setOut(logger);
 
     }
 
@@ -275,6 +284,11 @@ public class Main {
                 } else {
                     party_2.remove(attacker);
                 }
+                break;
+            }
+            if(party_1.size() <= 0) {
+                break;
+            } else if (party_2.size() <= 0) {
                 break;
             }
 
