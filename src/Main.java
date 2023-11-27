@@ -8,8 +8,6 @@ import java.util.*;
 
 
 public class Main {
-
-
     public static void main(String[] args) {
         System.out.println("Java Rol TUP");
         System.out.println("Welcome: ");
@@ -200,8 +198,9 @@ public class Main {
                     party_2.clear();
 
                 } else if (input.equals("3")) {
-                    // TODO: mostrar logs.
+
                     // Mostrar Logs
+
                     writer.close();
                     try {
                         Scanner reader = new Scanner(logs);
