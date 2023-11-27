@@ -162,7 +162,7 @@ public class Main {
                     int i = 1; // Número de rounds.
 
                     while (party_1.size() > 0 && party_2.size() > 0) {
-                        Combate(party_1, party_2, i);
+                        Combate(party_1, party_2, i, writer);
                     }
 
                     if (party_1.isEmpty()) {
@@ -399,29 +399,38 @@ public class Main {
             } else if (attacker instanceof Orco) {
                 double danio = ((Orco) attacker).ataque_orco(defender);
                 System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                writer.write(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".\n");
                 defender.health_update(danio);
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
                 System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
                 System.out.println("La salud del defensor: " + defender.getHealth() + ".");
+                writer.write("La salud del atacante: " + attacker.getHealth() + ".\n");
+                writer.write("La salud del defensor: " + defender.getHealth() + ".\n");
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             } else if (attacker instanceof Elfo) {
                 double danio = ((Elfo) attacker).ataque_elfo(defender);
                 System.out.println(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".");
+                writer.write(attacker.name + " attacks with: " + danio + " points to " + defender.name + ".\n");
                 defender.health_update(danio);
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
                 System.out.println("La salud del atacante: " + attacker.getHealth() + ".");
                 System.out.println("La salud del defensor: " + defender.getHealth() + ".");
+                writer.write("La salud del atacante: " + attacker.getHealth() + ".\n");
+                writer.write("La salud del defensor: " + defender.getHealth() + ".\n");
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             }
 
             if (defender.getHealth() < 0) {
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 System.out.println(attacker.name + " won!!! ");
+                writer.write(attacker.name + " won!!! \n");
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 if (party_1.contains(defender)) {
                     party_1.remove(defender);
                 } else {
@@ -430,8 +439,11 @@ public class Main {
                 break;
             } else if (attacker.getHealth() < 0){
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 System.out.println(defender.name + " won!!!");
+                writer.write(defender.name + " won!!! \n");
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 if (party_1.contains(attacker)) {
                     party_1.remove(attacker);
                 } else {
@@ -448,47 +460,64 @@ public class Main {
             i++;
 
             System.out.println("-------------------------------");
+            writer.write("-------------------------------\n");
             System.out.println("Round: " + i);
+            writer.write("Round: " + i + "\n");
             System.out.println("-------------------------------");
+            writer.write("-------------------------------\n");
 
             System.out.println(">>> Now " + defender.name + " attacks.");
+            writer.write(">>> Now " + defender.name + " attacks.\n");
             System.out.println("<<< " + attacker.name + " will defend.");
+            writer.write("<<< " + attacker.name + " will defend. \n");
 
             if (defender instanceof Humano ) {
                 double danio = ((Humano) defender).ataque_humano(attacker);
                 System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                writer.write(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".\n");
                 attacker.health_update(danio);
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
                 System.out.println("La salud del atacante: " + defender.getHealth() + ".");
                 System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                writer.write("La salud del atacante: " + defender.getHealth() + ".\n");
+                writer.write("La salud del defensor: " + attacker.getHealth() + ".\n");
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             } else if (defender instanceof Orco) {
                 double danio = ((Orco) defender).ataque_orco(attacker);
                 System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                writer.write(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".\n");
                 attacker.health_update(danio);
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
                 System.out.println("La salud del atacante: " + defender.getHealth() + ".");
                 System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                writer.write("La salud del atacante: " + defender.getHealth() + ".\n");
+                writer.write("La salud del defensor: " + attacker.getHealth() + ".\n");
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             } else if (defender instanceof Elfo) {
                 double danio = ((Elfo) defender).ataque_elfo(attacker);
                 System.out.println(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".");
+                writer.write(defender.name + " attacks with: " + danio + " points to " + attacker.name + ".\n");
                 attacker.health_update(danio);
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
                 System.out.println("La salud del atacante: " + defender.getHealth() + ".");
                 System.out.println("La salud del defensor: " + attacker.getHealth() + ".");
+                writer.write("La salud del atacante: " + defender.getHealth() + ".\n");
+                writer.write("La salud del defensor: " + attacker.getHealth() + ".\n");
                 System.out.println("Press Enter to continue...");
                 input = scanner.nextLine();
             }
             if (defender.getHealth() < 0) {
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 System.out.println(attacker.name + " won!!! ");
+                writer.write(attacker.name + " won!!!\n");
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 if (party_1.contains(defender)) {
                     party_1.remove(defender);
                 } else {
@@ -497,8 +526,11 @@ public class Main {
                 break;
             } else if (attacker.getHealth() < 0){
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 System.out.println(defender.name + " won!!!");
+                writer.write(defender.name + " won!!!\n");
                 System.out.println("-------------------------------");
+                writer.write("-------------------------------\n");
                 if (party_1.contains(attacker)) {
                     party_1.remove(attacker);
                 } else {
@@ -508,6 +540,7 @@ public class Main {
             }
             i++;
             System.out.println("-------------------------------");
+            writer.write("-------------------------------\n");
 
             if(party_1.size() <= 0) {
                 break;

@@ -4,8 +4,289 @@
 -------------------------------
 |          Party 2            |
 -------------------------------
+Second party attacks first
 -------------------------------
-CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.
+>>>Arannis attacks first.
+<<<Arannis will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Arannis attacks with: 4.903762499999999 points to Evelina.
+La salud del atacante: 100.
+La salud del defensor: 96.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Evelina attacks.
+<<< Arannis will defend. 
+Evelina attacks with: 16.968 points to Arannis.
+La salud del atacante: 96.
+La salud del defensor: 84.
+-------------------------------
+-------------------------------
+Round: 3
+-------------------------------
+Arannis attacks with: 4.1950125 points to Evelina.
+La salud del atacante: 84.
+La salud del defensor: 92.
+-------------------------------
+Round: 4
+-------------------------------
+>>> Now Evelina attacks.
+<<< Arannis will defend. 
+Evelina attacks with: 37.168000000000006 points to Arannis.
+La salud del atacante: 92.
+La salud del defensor: 47.
+-------------------------------
+-------------------------------
+Round: 5
+-------------------------------
+Arannis attacks with: 2.7722625 points to Evelina.
+La salud del atacante: 47.
+La salud del defensor: 90.
+-------------------------------
+Round: 6
+-------------------------------
+>>> Now Evelina attacks.
+<<< Arannis will defend. 
+Evelina attacks with: 8.088000000000001 points to Arannis.
+La salud del atacante: 90.
+La salud del defensor: 39.
+-------------------------------
+First party attacks first.
+-------------------------------
+>>>Evelina attacks first.
+<<<Evelina will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Evelina attacks with: 0.008 points to Grulash.
+La salud del atacante: 90.
+La salud del defensor: 100.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Grulash attacks.
+<<< Evelina will defend. 
+Grulash attacks with: 1.2782 points to Evelina.
+La salud del atacante: 100.
+La salud del defensor: 89.
+-------------------------------
+-------------------------------
+Round: 3
+-------------------------------
+Evelina attacks with: 22.308 points to Grulash.
+La salud del atacante: 89.
+La salud del defensor: 78.
+-------------------------------
+Round: 4
+-------------------------------
+>>> Now Grulash attacks.
+<<< Evelina will defend. 
+Grulash attacks with: 0.259875 points to Evelina.
+La salud del atacante: 78.
+La salud del defensor: 89.
+-------------------------------
+-------------------------------
+Round: 5
+-------------------------------
+Evelina attacks with: 50.147999999999996 points to Grulash.
+La salud del atacante: 89.
+La salud del defensor: 28.
+-------------------------------
+Round: 6
+-------------------------------
+>>> Now Grulash attacks.
+<<< Evelina will defend. 
+Grulash attacks with: 0.25465 points to Evelina.
+La salud del atacante: 28.
+La salud del defensor: 89.
+-------------------------------
+First party attacks first.
+-------------------------------
+>>>Aricen attacks first.
+<<<Aricen will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Aricen attacks with: 0.27037500000000003 points to Grulash.
+La salud del atacante: 100.
+La salud del defensor: 28.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Grulash attacks.
+<<< Aricen will defend. 
+Grulash attacks with: 0.513425 points to Aricen.
+La salud del atacante: 28.
+La salud del defensor: 100.
+-------------------------------
+-------------------------------
+Round: 3
+-------------------------------
+Aricen attacks with: 2.150925 points to Grulash.
+La salud del atacante: 100.
+La salud del defensor: 26.
+-------------------------------
+Round: 4
+-------------------------------
+>>> Now Grulash attacks.
+<<< Aricen will defend. 
+Grulash attacks with: 1.5818 points to Aricen.
+La salud del atacante: 26.
+La salud del defensor: 99.
+-------------------------------
+-------------------------------
+Round: 5
+-------------------------------
+Aricen attacks with: 1.6884000000000001 points to Grulash.
+La salud del atacante: 99.
+La salud del defensor: 25.
+-------------------------------
+Round: 6
+-------------------------------
+>>> Now Grulash attacks.
+<<< Aricen will defend. 
+Grulash attacks with: 0.9718500000000003 points to Aricen.
+La salud del atacante: 25.
+La salud del defensor: 99.
+-------------------------------
+First party attacks first.
+-------------------------------
+>>>Evelina attacks first.
+<<<Evelina will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Evelina attacks with: 53.08 points to Haldir.
+La salud del atacante: 89.
+La salud del defensor: 47.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Haldir attacks.
+<<< Evelina will defend. 
+Haldir attacks with: 2.5284000000000004 points to Evelina.
+La salud del atacante: 47.
+La salud del defensor: 87.
+-------------------------------
+-------------------------------
+Round: 3
+-------------------------------
+Evelina attacks with: 11.740000000000002 points to Haldir.
+La salud del atacante: 87.
+La salud del defensor: 36.
+-------------------------------
+Round: 4
+-------------------------------
+>>> Now Haldir attacks.
+<<< Evelina will defend. 
+Haldir attacks with: 0.23625000000000004 points to Evelina.
+La salud del atacante: 36.
+La salud del defensor: 87.
+-------------------------------
+-------------------------------
+Round: 5
+-------------------------------
+Evelina attacks with: 71.98 points to Haldir.
+La salud del atacante: 87.
+La salud del defensor: -35.
+-------------------------------
+Evelina won!!! 
+-------------------------------
+Second party attacks first
+-------------------------------
+>>>Grulash attacks first.
+<<<Grulash will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Grulash attacks with: 1.1855250000000002 points to Evelina.
+La salud del atacante: 25.
+La salud del defensor: 86.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Evelina attacks.
+<<< Grulash will defend. 
+Evelina attacks with: 134.468 points to Grulash.
+La salud del atacante: 86.
+La salud del defensor: -109.
+-------------------------------
+Evelina won!!!
+-------------------------------
+First party attacks first.
+-------------------------------
+>>>Aricen attacks first.
+<<<Aricen will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Aricen attacks with: 0.176925 points to Arannis.
+La salud del atacante: 99.
+La salud del defensor: 39.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Arannis attacks.
+<<< Aricen will defend. 
+Arannis attacks with: 4.069275 points to Aricen.
+La salud del atacante: 39.
+La salud del defensor: 95.
+-------------------------------
+-------------------------------
+Round: 3
+-------------------------------
+Aricen attacks with: 2.5158000000000005 points to Arannis.
+La salud del atacante: 95.
+La salud del defensor: 37.
+-------------------------------
+Round: 4
+-------------------------------
+>>> Now Arannis attacks.
+<<< Aricen will defend. 
+Arannis attacks with: 2.1635250000000004 points to Aricen.
+La salud del atacante: 37.
+La salud del defensor: 93.
+-------------------------------
+-------------------------------
+Round: 5
+-------------------------------
+Aricen attacks with: 1.6128 points to Arannis.
+La salud del atacante: 93.
+La salud del defensor: 36.
+-------------------------------
+Round: 6
+-------------------------------
+>>> Now Arannis attacks.
+<<< Aricen will defend. 
+Arannis attacks with: 0.20790000000000003 points to Aricen.
+La salud del atacante: 36.
+La salud del defensor: 93.
+-------------------------------
+Second party attacks first
+-------------------------------
+>>>Arannis attacks first.
+<<<Arannis will defend.
+-------------------------------
+Round: 1
+-------------------------------
+Arannis attacks with: 2.4349500000000006 points to Evelina.
+La salud del atacante: 36.
+La salud del defensor: 84.
+-------------------------------
+Round: 2
+-------------------------------
+>>> Now Evelina attacks.
+<<< Arannis will defend. 
+Evelina attacks with: 49.80800000000001 points to Arannis.
+La salud del atacante: 84.
+La salud del defensor: -13.
+-------------------------------
+Evelina won!!!
+-------------------------------
+-------------------------------
+CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.
 -------------------------------
 ^  ^  ^
 |V * V|
