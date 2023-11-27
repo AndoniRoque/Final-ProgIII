@@ -214,7 +214,7 @@ public class Main {
                 } else if (input.equals("4")) {
 
                     // Borrar logs.
-
+                    writer.close();
                     System.out.println("Are you sure you want to delete the logs?");
                     System.out.println("1 - YES");
                     System.out.println("2 - Cancel.");
