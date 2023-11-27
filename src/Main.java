@@ -3,10 +3,7 @@
 // TUP - UTN - FRBB
 //
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.*;
 
 
@@ -24,7 +21,7 @@ public class Main {
 
         try {
             if (logs.createNewFile()) {
-                System.out.println("Logs file created " + logs.getName() + ".");
+                System.out.println("Logs file created: " + logs.getName() + ".");
                 System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
             } else {
                 System.out.println("File already exists.");
@@ -178,7 +175,7 @@ public class Main {
                         writer.write("^  ^  ^\n");
                         System.out.println("|V * V|");
                         writer.write("|V * V|\n");
-                        System.out.println("|_____| ");
+                        System.out.println("|_____|");
                         writer.write("|_____|\n");
                         writer.close();
                     } else {
@@ -194,7 +191,7 @@ public class Main {
                         writer.write("^  ^  ^\n");
                         System.out.println("|V * V|");
                         writer.write("|V * V|\n");
-                        System.out.println("|_____| ");
+                        System.out.println("|_____|");
                         writer.write("|_____|\n");
                         writer.close();
                     }
@@ -202,14 +199,22 @@ public class Main {
                     party_1.clear();
                     party_2.clear();
 
-
-                    break;
-
                 } else if (input.equals("3")) {
                     // TODO: mostrar logs.
                     // Mostrar Logs
+                    writer.close();
+                    try {
+                        Scanner reader = new Scanner(logs);
+                        while (reader.hasNextLine()) {
+                            String data = reader.nextLine();
+                            System.out.println(data);
+                        }
+                        reader.close();
+                    } catch (FileNotFoundException e){
+                        System.out.println("File not found.");
+                        e.printStackTrace();
+                    }
 
-                    break;
 
                 } else if (input.equals("4")) {
 
@@ -231,7 +236,6 @@ public class Main {
                             System.out.println("File doesn't exist.");
                         }
                     }
-                    break;
 
                 } else if (!input.equals("5")) {
                     System.out.println("You shall not pass!!");
