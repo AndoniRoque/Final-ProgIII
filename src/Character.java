@@ -4,8 +4,8 @@
 //
 
 public class Character {
-    int health;
-    int level;
+    protected int health;
+    protected int level;
     String name;
 
     public Character(int level, int health, String name) {
@@ -14,23 +14,23 @@ public class Character {
         this.name = name;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
-    public int getHealth() {
+    protected int getHealth() {
         return this.health;
     }
 
-    public void setHealth(int health) {
+    protected void setHealth(int health) {
         this.health = health;
     }
 
-    public int getLevel() {
+    protected int getLevel() {
         return this.level;
     }
 
-    public void setLevel(int level) {
+    protected void setLevel(int level) {
         this.level = level;
     }
 }

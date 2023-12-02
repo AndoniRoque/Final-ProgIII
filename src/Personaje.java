@@ -6,15 +6,15 @@
 import java.util.Random;
 
 public class Personaje extends Character {
-    public int str;
-    public int dex;
-    public int def;
-    public int spd;
-    public String tipo;
-    public double poder_disparo;
-    public double efectividad_disparo;
-    public double valor_ataque;
-    public double poder_defensa;
+    protected int str;
+    protected int dex;
+    protected int def;
+    protected int spd;
+    protected String tipo;
+    protected double poder_disparo;
+    protected double efectividad_disparo;
+    protected double valor_ataque;
+    protected double poder_defensa;
 
     public Personaje(int level, int health, String name, int str, int dex, int def, int spd, String tipo) {
         super(level, health, name);
@@ -25,75 +25,75 @@ public class Personaje extends Character {
         this.tipo = tipo;
     }
 
-    public String getTipo() {
+    protected String getTipo() {
         return this.tipo;
     }
 
-    public void setTipo(String tipo) {
+    protected void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public int getStr() {
+    protected int getStr() {
         return this.str;
     }
 
-    public void setStr(int str) {
+    protected void setStr(int str) {
         this.str = str;
     }
 
-    public int getDex() {
+    protected int getDex() {
         return this.dex;
     }
 
-    public void setDex(int dex) {
+    protected void setDex(int dex) {
         this.dex = dex;
     }
 
-    public int getDef() {
+    protected int getDef() {
         return this.def;
     }
 
-    public void setDef(int def) {
+    protected void setDef(int def) {
         this.def = def;
     }
 
-    public int getSpd() {
+    protected int getSpd() {
         return this.spd;
     }
 
-    public void setSpd(int spd) {
+    protected void setSpd(int spd) {
         this.spd = spd;
     }
 
-    public double getPoder_disparo() {
+    protected double getPoder_disparo() {
         return poder_disparo;
     }
 
-    public void setPoder_disparo(double poder_disparo) {
+    protected void setPoder_disparo(double poder_disparo) {
         this.poder_disparo = poder_disparo;
     }
 
-    public double getEfectividad_disparo() {
+    protected double getEfectividad_disparo() {
         return efectividad_disparo;
     }
 
-    public void setEfectividad_disparo(double efectividad_disparo) {
+    protected void setEfectividad_disparo(double efectividad_disparo) {
         this.efectividad_disparo = efectividad_disparo;
     }
 
-    public double getValor_ataque() {
+    protected double getValor_ataque() {
         return valor_ataque;
     }
 
-    public void setValor_ataque(double valor_ataque) {
+    protected void setValor_ataque(double valor_ataque) {
         this.valor_ataque = valor_ataque;
     }
 
-    public double getPoder_defensa() {
+    protected double getPoder_defensa() {
         return poder_defensa;
     }
 
-    public void setPoder_defensa(double poder_defensa) {
+    protected void setPoder_defensa(double poder_defensa) {
         this.poder_defensa = poder_defensa;
     }
 
@@ -116,7 +116,7 @@ public class Personaje extends Character {
         return this.def * this.spd;
     }
 
-    public void health_update(double daño_ataque) {
+    protected void health_update(double daño_ataque) {
         setHealth(health - (int)daño_ataque);
     }
 
