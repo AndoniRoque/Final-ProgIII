@@ -125,6 +125,18 @@ public class Main {
 
                 } else if (input.equals("2")) {
 
+                    try {
+                        if (logs.createNewFile()) {
+                            System.out.println("Logs file created: " + logs.getName() + ".");
+                            System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
+                        } else {
+                            System.out.println("File already exists.");
+                        }
+                    } catch (IOException e) {
+                        System.out.println("An error ocurred.");
+                        e.printStackTrace();
+                    }
+
                     // Crear personajes aleatoriamente.
 
                     for (int i = 0; i < 3; i++) {
@@ -254,7 +266,7 @@ public class Main {
 
 
     public static Personaje GenerarPersonajes() {
-        // TODO: limitar skill points
+
         Scanner scanner = new Scanner(System.in);
         int select_tipo = -1;
         String tipo = "";
@@ -292,20 +304,74 @@ public class Main {
         System.out.println("Enter character's name: ");
         String name = scanner.nextLine();
 
-        System.out.println("Enter character's strength: ");
-        int str = scanner.nextInt();
+        // Set character's skill points, limited from 1-10.
+        int str = 0;
+        while(true) {
+            try{
+                System.out.println("Enter character's strength: ");
+                str = Integer.parseInt(scanner.nextLine());
+
+                if (str >= 1 && str <= 10) {
+                    break;
+                } else {
+                    System.out.println("Please enter a number between 1 and 10.");
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+
         scanner.nextLine();
 
-        System.out.println("Enter character's dexterity: ");
-        int dex = scanner.nextInt();
+        int dex = 0;
+        while(true) {
+            try{
+                System.out.println("Enter character's dexterity: ");
+                dex = Integer.parseInt(scanner.nextLine());
+
+                if (dex >= 1 && dex <= 10) {
+                    break;
+                } else {
+                    System.out.println("Please enter a number between 1 and 10.");
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
         scanner.nextLine();
 
-        System.out.println("Enter character's defence: ");
-        int def = scanner.nextInt();
+        int def = 0;
+        while(true) {
+            try{
+                System.out.println("Enter character's defence: ");
+                def = Integer.parseInt(scanner.nextLine());
+
+                if (def >= 1 && def <= 10) {
+                    break;
+                } else {
+                    System.out.println("Please enter a number between 1 and 10.");
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
         scanner.nextLine();
 
-        System.out.println("Enter character's speed: ");
-        int spd = scanner.nextInt();
+        int spd = 0;
+        while(true) {
+            try{
+                System.out.println("Enter character's speed: ");
+                spd = Integer.parseInt(scanner.nextLine());
+
+                if (spd >= 1 && spd <= 10) {
+                    break;
+                } else {
+                    System.out.println("Please enter a number between 1 and 10.");
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
         scanner.nextLine();
 
         Personaje character1 = null;
