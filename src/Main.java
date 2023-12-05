@@ -4,13 +4,17 @@
 //
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Java Rol TUP");
+        System.out.println("-------------------------------");
         System.out.println("Welcome: ");
+
         String input = "0";
         ArrayList<Personaje> party_1 = new ArrayList();
         ArrayList<Personaje> party_2 = new ArrayList();
@@ -29,239 +33,266 @@ public class Main {
             e.printStackTrace();
         }
 
-        try {
-            FileWriter writer = new FileWriter("logs.txt");
-
-        // Menú
-        while(!input.equals("5")) {
-            System.out.println("     1 . Start.");
-            System.out.println("     2 . Start with random characters.");
-            System.out.println("     3 . Read Log");
-            System.out.println("     4 . Delete log");
-            System.out.println("     5 . Exit.");
 
 
 
+            while(!input.equals("5")) {
 
+                // Menú
+                System.out.println("     1 . Start.");
+                System.out.println("     2 . Start with random characters.");
+                System.out.println("     3 . Read Log");
+                System.out.println("     4 . Delete log");
+                System.out.println("     5 . Exit.");
 
-                Scanner scanner = new Scanner(System.in);
+                    Scanner scanner = new Scanner(System.in);
 
-                System.out.println("Select and press Enter: ");
+                    System.out.println("Select and press Enter: ");
 
-                input = scanner.nextLine();
-
-                if (input.equals("1")) {
-
-                    // Crear Personajes Manualmente.
-
-                    // Generar 3 personajes por jugador
-                    for (int i = 0; i < 3; i++) {
-                        party_1.add(GenerarPersonajes());
-                    }
-
-
-                    System.out.println("Press enter to continue...");
                     input = scanner.nextLine();
 
-                    System.out.println("Create second party... press enter.");
-                    input = scanner.nextLine();
+                    if (input.equals("1")) {
 
-                    for (int i = 0; i < 3; i++) {
-                        party_2.add(GenerarPersonajes());
-                    }
 
-                    System.out.println("-------------------------------");
-                    writer.write("-------------------------------\n");
-                    System.out.println("Combat will start soon.");
-                    writer.write("Combat will start soon.\n");
-                    System.out.println("-------------------------------");
-                    writer.write("-------------------------------\n");
-                    System.out.println("Press Enter to continue...");
-                    input = scanner.nextLine();
+                        if (!logs.exists()) {
+                            try {
+                                if (logs.createNewFile()) {
+                                    System.out.println("Logs file created: " + logs.getName() + ".");
+                                    System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
+                                } else {
+                                    System.out.println("File already exists.");
+                                }
+                            } catch (IOException e) {
+                                System.out.println("An error ocurred.");
+                                e.printStackTrace();
+                            }
+                        }
 
-                    int i = 1; // Número de rounds.
+                        FileWriter writer = new FileWriter("logs.txt");
 
-                    while (party_1.size() > 0 && party_2.size() > 0) {
-                        Combate(party_1, party_2, i, writer);
-                    }
+                        // Crear Personajes Manualmente.
 
-                    if (party_1.isEmpty()) {
+                        // Generar 3 personajes por jugador
+                        for (int i = 0; i < 3; i++) {
+                            party_1.add(GenerarPersonajes());
+                        }
+
+
+                        System.out.println("Press enter to continue...");
+                        input = scanner.nextLine();
+
+                        System.out.println("Create second party... press enter.");
+                        input = scanner.nextLine();
+
+                        for (int i = 0; i < 3; i++) {
+                            party_2.add(GenerarPersonajes());
+                        }
+
+                        System.out.println("-------------------------------");
+                        writer.write("-------------------------------\n");
+                        System.out.println("Combat will start soon.");
+                        writer.write("Combat will start soon.\n");
+                        System.out.println("-------------------------------");
+                        writer.write("-------------------------------\n");
                         System.out.println("Press Enter to continue...");
                         input = scanner.nextLine();
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        System.out.println("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.");
-                        writer.write("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.\n");
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        System.out.println("^  ^  ^");
-                        writer.write("^  ^  ^\n");
-                        System.out.println("|V * V|");
-                        writer.write("|V * V|\n");
-                        System.out.println("|_____| ");
-                        writer.write("|_____|\n");
-                        writer.close();
-                    } else {
-                        System.out.println("Press Enter to continue...");
-                        input = scanner.nextLine();
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        System.out.println("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.");
-                        writer.write("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.\n");
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        System.out.println("^  ^  ^");
-                        writer.write("^  ^  ^\n");
-                        System.out.println("|V * V|");
-                        writer.write("|V * V|\n");
-                        System.out.println("|_____| ");
-                        writer.write("|_____|\n");
-                        writer.close();
-                    }
 
-                    party_1.clear();
-                    party_2.clear();
+                        int i = 1; // Número de rounds.
 
+                        while (party_1.size() > 0 && party_2.size() > 0) {
+                            Combate(party_1, party_2, i, writer);
+                        }
 
-                } else if (input.equals("2")) {
-
-                    try {
-                        if (logs.createNewFile()) {
-                            System.out.println("Logs file created: " + logs.getName() + ".");
-                            System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
+                        if (party_1.isEmpty()) {
+                            System.out.println("Press Enter to continue...");
+                            input = scanner.nextLine();
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            System.out.println("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.");
+                            writer.write("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.\n");
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            System.out.println("^  ^  ^");
+                            writer.write("^  ^  ^\n");
+                            System.out.println("|V * V|");
+                            writer.write("|V * V|\n");
+                            System.out.println("|_____| ");
+                            writer.write("|_____|\n");
+                            writer.close();
                         } else {
-                            System.out.println("File already exists.");
+                            System.out.println("Press Enter to continue...");
+                            input = scanner.nextLine();
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            System.out.println("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.");
+                            writer.write("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.\n");
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            System.out.println("^  ^  ^");
+                            writer.write("^  ^  ^\n");
+                            System.out.println("|V * V|");
+                            writer.write("|V * V|\n");
+                            System.out.println("|_____| ");
+                            writer.write("|_____|\n");
+                            writer.close();
                         }
-                    } catch (IOException e) {
-                        System.out.println("An error ocurred.");
-                        e.printStackTrace();
-                    }
 
-                    // Crear personajes aleatoriamente.
+                        party_1.clear();
+                        party_2.clear();
 
-                    for (int i = 0; i < 3; i++) {
-                        party_1.add(GenerarPeronsajesAleatorios());
-                        party_2.add(GenerarPeronsajesAleatorios());
-                    }
-
-                    System.out.println("-------------------------------");
-                    System.out.println("|          Party 1            |");
-                    System.out.println("-------------------------------");
-                    writer.write("-------------------------------\n");
-                    writer.write("|          Party 1            |\n");
-                    writer.write("-------------------------------\n");
-                    MostrarParty(party_1);
-
-                    System.out.println("Press enter to continue...");
-                    input = scanner.nextLine();
-
-                    System.out.println("-------------------------------");
-                    System.out.println("|          Party 2            |");
-                    System.out.println("-------------------------------");
-                    writer.write("-------------------------------\n");
-                    writer.write("|          Party 2            |\n");
-                    writer.write("-------------------------------\n");
-                    MostrarParty(party_2);
-
-                    System.out.println("Press enter to continue...");
-                    input = scanner.nextLine();
-
-                    int i = 1; // Número de rounds.
-
-                    while (party_1.size() > 0 && party_2.size() > 0) {
-                        Combate(party_1, party_2, i, writer);
-                    }
-
-                    if (party_1.isEmpty()) {
-                        System.out.println("Press Enter to continue...");
-                        input = scanner.nextLine();
-                        System.out.println("-------------------------------");
-                        System.out.println("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.");
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        writer.write("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.\n");
-                        writer.write("-------------------------------\n");
-                        System.out.println("^  ^  ^");
-                        writer.write("^  ^  ^\n");
-                        System.out.println("|V * V|");
-                        writer.write("|V * V|\n");
-                        System.out.println("|_____|");
-                        writer.write("|_____|\n");
                         writer.close();
-                    } else {
-                        System.out.println("Press Enter to continue...");
-                        input = scanner.nextLine();
-                        System.out.println("-------------------------------");
-                        System.out.println("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.");
-                        System.out.println("-------------------------------");
-                        writer.write("-------------------------------\n");
-                        writer.write("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.\n");
-                        writer.write("-------------------------------\n");
-                        System.out.println("^  ^  ^");
-                        writer.write("^  ^  ^\n");
-                        System.out.println("|V * V|");
-                        writer.write("|V * V|\n");
-                        System.out.println("|_____|");
-                        writer.write("|_____|\n");
-                        writer.close();
-                    }
 
-                    party_1.clear();
-                    party_2.clear();
-
-                } else if (input.equals("3")) {
-
-                    // Mostrar Logs
-
-                    writer.close();
-                    try {
-                        Scanner reader = new Scanner(logs);
-                        while (reader.hasNextLine()) {
-                            String data = reader.nextLine();
-                            System.out.println(data);
-                        }
-                        reader.close();
-                    } catch (FileNotFoundException e){
-                        System.out.println("File not found.");
-                        e.printStackTrace();
-                    }
+                    } else if (input.equals("2")) {
 
 
-                } else if (input.equals("4")) {
-
-                    // Borrar logs.
-                    writer.close();
-                    System.out.println("Are you sure you want to delete the logs?");
-                    System.out.println("1 - YES");
-                    System.out.println("2 - Cancel.");
-                    input = scanner.nextLine().toUpperCase();
-
-                    if(input.equals("1") || input.equals("YES")) {
-                        if (logs.exists()) {
-                            if (logs.delete()) {
-                                System.out.println("Logs file deletated successfully.");
-                            } else {
-                                System.out.println("Unable to delte the file.");
+                        if (!logs.exists()) {
+                            try {
+                                if (logs.createNewFile()) {
+                                    System.out.println("Logs file created: " + logs.getName() + ".");
+                                    System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
+                                } else {
+                                    System.out.println("File already exists.");
+                                }
+                            } catch (IOException e) {
+                                System.out.println("An error ocurred.");
+                                e.printStackTrace();
                             }
                         } else {
-                            System.out.println("File doesn't exist.");
+
+                            FileWriter writer = new FileWriter("logs.txt");
+
+                            // Crear personajes aleatoriamente.
+
+                            for (int i = 0; i < 3; i++) {
+                                party_1.add(GenerarPeronsajesAleatorios());
+                                party_2.add(GenerarPeronsajesAleatorios());
+                            }
+
+                            System.out.println("-------------------------------");
+                            System.out.println("|          Party 1            |");
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            writer.write("|          Party 1            |\n");
+                            writer.write("-------------------------------\n");
+                            MostrarParty(party_1);
+
+                            System.out.println("Press enter to continue...");
+                            input = scanner.nextLine();
+
+                            System.out.println("-------------------------------");
+                            System.out.println("|          Party 2            |");
+                            System.out.println("-------------------------------");
+                            writer.write("-------------------------------\n");
+                            writer.write("|          Party 2            |\n");
+                            writer.write("-------------------------------\n");
+                            MostrarParty(party_2);
+
+                            System.out.println("Press enter to continue...");
+                            input = scanner.nextLine();
+
+                            int i = 1; // Número de rounds.
+
+                            while (party_1.size() > 0 && party_2.size() > 0) {
+                                Combate(party_1, party_2, i, writer);
+                            }
+
+                            if (party_1.isEmpty()) {
+                                System.out.println("Press Enter to continue...");
+                                input = scanner.nextLine();
+                                System.out.println("-------------------------------");
+                                System.out.println("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.");
+                                System.out.println("-------------------------------");
+                                writer.write("-------------------------------\n");
+                                writer.write("CONGRATULATIONS PLAYER 2 - YOU'VE WON THE IRON THRONE.\n");
+                                writer.write("-------------------------------\n");
+                                System.out.println("^  ^  ^");
+                                writer.write("^  ^  ^\n");
+                                System.out.println("|V * V|");
+                                writer.write("|V * V|\n");
+                                System.out.println("|_____|");
+                                writer.write("|_____|\n");
+                                writer.close();
+                            } else {
+                                System.out.println("Press Enter to continue...");
+                                input = scanner.nextLine();
+                                System.out.println("-------------------------------");
+                                System.out.println("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.");
+                                System.out.println("-------------------------------");
+                                writer.write("-------------------------------\n");
+                                writer.write("CONGRATULATIONS PLAYER 1 - YOU'VE WON THE IRON THRONE.\n");
+                                writer.write("-------------------------------\n");
+                                System.out.println("^  ^  ^");
+                                writer.write("^  ^  ^\n");
+                                System.out.println("|V * V|");
+                                writer.write("|V * V|\n");
+                                System.out.println("|_____|");
+                                writer.write("|_____|\n");
+                                writer.close();
+                            }
+
+                            party_1.clear();
+                            party_2.clear();
+
+                            writer.close();
                         }
+
+                    } else if (input.equals("3")) {
+
+                        if (!logs.exists()) {
+                            System.out.println("There are no log files");
+                        } else {
+
+
+                            try {
+                                Scanner reader = new Scanner(logs);
+
+                                if (Files.size(Paths.get("logs.txt")) == 0) {
+                                    System.out.println("There are no logs recorded yet.");
+                                } else {
+                                    while (reader.hasNextLine()) {
+                                        String data = reader.nextLine();
+                                        System.out.println(data);
+                                    }
+                                }
+
+                                reader.close();
+                            } catch (FileNotFoundException e) {
+                                System.out.println("File not found.");
+                                e.printStackTrace();
+                            }
+                        }
+                    } else if (input.equals("4")) {
+
+                        // Borrar logs.
+                        System.out.println("Are you sure you want to delete the logs?");
+                        System.out.println("1 - YES");
+                        System.out.println("2 - Cancel.");
+                        input = scanner.nextLine().toUpperCase();
+
+
+                        if(input.equals("1") || input.equals("YES")) {
+
+                            if (logs.exists()) {
+                                if (logs.delete()) {
+                                    System.out.println("Logs file deleted successfully.");
+                                } else {
+                                    System.out.println("Unable to delete the file.");
+                                }
+                            } else {
+                                System.out.println("File doesn't exist.");
+                            }
+                        }
+
+                    } else if (!input.equals("5")) {
+                        System.out.println("You shall not pass!!");
                     }
 
-                } else if (!input.equals("5")) {
-                    System.out.println("You shall not pass!!");
+                    System.out.println("Press Enter to exit...");
+                    scanner.nextLine();
                 }
-
-                System.out.println("Press Enter to exit...");
-                scanner.nextLine();
-
-
             }
-        } catch (IOException e){
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-    }
+
+
 
 
 
@@ -321,8 +352,6 @@ public class Main {
             }
         }
 
-        scanner.nextLine();
-
         int dex = 0;
         while(true) {
             try{
@@ -338,7 +367,6 @@ public class Main {
                 System.out.println("Please enter a valid number.");
             }
         }
-        scanner.nextLine();
 
         int def = 0;
         while(true) {
@@ -355,7 +383,6 @@ public class Main {
                 System.out.println("Please enter a valid number.");
             }
         }
-        scanner.nextLine();
 
         int spd = 0;
         while(true) {
@@ -372,7 +399,6 @@ public class Main {
                 System.out.println("Please enter a valid number.");
             }
         }
-        scanner.nextLine();
 
         Personaje character1 = null;
 
@@ -415,7 +441,12 @@ public class Main {
 
     public static Personaje ElegirPersonaje(ArrayList<Personaje> party) {
         Random random = new Random();
-        int jugador = random.nextInt(party.size());
+        int jugador = 0;
+        if (party.size() > 0) {
+            jugador = random.nextInt(party.size());
+        } else {
+            return null;
+        }
         return party.get(jugador);
     }
 
