@@ -475,7 +475,7 @@ public class Main {
         System.out.println("<<<" + defender.name + " will defend.");
         writer.write("<<<" + attacker.name + " will defend.\n");
 
-        while(i < 7 && attacker.getHealth() > 0 && defender.getHealth() > 0) {
+        while(i <= 7 && attacker.getHealth() >= 0.0 && defender.getHealth() > 0.0) {
             System.out.println("-------------------------------");
             writer.write("-------------------------------\n");
             System.out.println("Round: " + i);
